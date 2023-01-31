@@ -26,10 +26,11 @@ vim.opt.isfname:append("@-@")
 
 --vim.opt.updatetime = 50
 
---vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "80"
 --vim.opt.lazyredraw = true
 
 vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 
 vim.g.NERDTreeDirArrows = 1
@@ -40,3 +41,11 @@ vim.g.NERDTreeDirArrowCollapsible = '▾'
 vim.cmd([[
         let NERDTreeIgnore=['\.aux$', '\.bbl$', '\.blg$', '\.synctex$', '\.fdb_latex$', '\.fls$', '\.asv$', '\~$', '\.pyc$', 'tags', '\.mat$']
     ]])
+
+vim.cmd([[ 
+    let g:vimtex_quickfix_ignore_filters = [
+    \ 'Overfull',
+    \]
+]])
+vim.cmd([[let g:vimtex_quickfix_open_on_warning = 0]])
+vim.cmd([[let g:vimtex_quickfix_autoclose_after_keystrokes = 2]])

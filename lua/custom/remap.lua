@@ -1,7 +1,20 @@
+-- local n_keymap = function(lhs, rhs)
+--     vim.api.nvim_set_keymap('n', lhs, rhs, { noremap = true, silent = true })
+-- end
+local function map(mode, lhs, rhs, opts)
+    local options = { noremap=true, silent=true }
+    if opts then
+        options = vim.tbl_extend('force', options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
 vim.keymap.set("n", ";", ":")
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>cd", ":cd %:p:h<CR> :pwd<CR>")
 vim.keymap.set("n", "<leader>rn", ":set invrelativenumber<CR>")
+
+map("n", "<S-]>", ";")
 
 -- NERDTree
 vim.keymap.set("n", "<C-n>", ":NERDTreeToggle $HOME <CR>")
@@ -33,3 +46,6 @@ vim.keymap.set("i", "ii", "<Esc>")
 vim.cmd("nnoremap <silent> yf :let @+=expand('%:p')<CR>")
 -- copies pwd to clipboard: command yd
 vim.cmd("noremap <silent> yd :let @+=expand('%:p:h')<CR>")
+-- paste and keep contents of default register
+vim.keymap.set("x", "<leader>p", '"_dP')
+
