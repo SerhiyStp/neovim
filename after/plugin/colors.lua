@@ -7,4 +7,4 @@ function SetColors(color)
 
 end
 
-SetColors()
+SetColors("onedark")

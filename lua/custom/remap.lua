@@ -8,13 +8,18 @@ local function map(mode, lhs, rhs, opts)
     end
     vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
-
 vim.keymap.set("n", ";", ":")
 vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("n", "<leader>cd", ":cd %:p:h<CR> :pwd<CR>")
 vim.keymap.set("n", "<leader>rn", ":set invrelativenumber<CR>")
 
 map("n", "<S-]>", ";")
+map("n", "<S-h>", ":BufferLineCyclePrev<CR>")
+map("n", "<S-l>", ":BufferLineCycleNext<CR>")
+map("n", "<silent>be", ":BufferLineSortByExtension<CR>")
+map("n", "<silent>bd", ":BufferLineSortByDirectory<CR>")
+map("n", "<silent>", "gb :BufferLinePick<CR>")
+map("n", "<silent>", "gD :BufferLinePickClose<CR>")
 
 -- NERDTree
 vim.keymap.set("n", "<C-n>", ":NERDTreeToggle $HOME <CR>")
@@ -47,5 +52,5 @@ vim.cmd("nnoremap <silent> yf :let @+=expand('%:p')<CR>")
 -- copies pwd to clipboard: command yd
 vim.cmd("noremap <silent> yd :let @+=expand('%:p:h')<CR>")
 -- paste and keep contents of default register
-vim.keymap.set("x", "<leader>p", '"_dP')
+--vim.keymap.set("x", "<leader>p", '"_dP')
 

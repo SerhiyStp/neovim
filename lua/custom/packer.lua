@@ -18,7 +18,16 @@ return require('packer').startup(function(use)
             --vim.cmd('colorscheme rose-pine')
         end
     })
+    -- Color schemes
     use 'navarasu/onedark.nvim' -- Theme inspired by Atom
+    use 'folke/tokyonight.nvim'
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "ellisonleao/gruvbox.nvim" }
+    use 'nyoom-engineering/nyoom.nvim'
+    use { "bluz71/vim-nightfly-colors", as = "nightfly" }
+    use "savq/melange-nvim"
+    use 'rmehri01/onenord.nvim'
+
     -- statusline
     use {
         'nvim-lualine/lualine.nvim', -- Fancier statusline
@@ -26,7 +35,8 @@ return require('packer').startup(function(use)
     }
     -- Useful status updates for LSP
     use 'j-hui/fidget.nvim'
-
+    -- treesitter
+    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     -- Additional lua configuration, makes nvim stuff amazing
     use 'folke/neodev.nvim'
     -- Add indentation guides even on blank lines
@@ -71,8 +81,13 @@ return require('packer').startup(function(use)
            -- Snippets
            {'L3MON4D3/LuaSnip'},             -- Required
            {'rafamadriz/friendly-snippets'}, -- Optional
-       }
+       },
+       --disable = true
     }
 
-    use 'preservim/vim-markdown'
+    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+    --use 'preservim/vim-markdown'
+    use {"akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup()
+    end}
 end)
